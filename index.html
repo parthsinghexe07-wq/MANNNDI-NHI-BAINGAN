@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Waffle.exe 🍫</title>
+<style>
+:root{--pink:#ff4f81;--cream:#fff8f1;--brown:#45251b;--muted:#78584d;--gold:#ffbd55}
+*{box-sizing:border-box}body{margin:0;color:var(--brown);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 15% 5%,#ffd6e3,transparent 30%),linear-gradient(135deg,#fff9f3,#ffeaf1);min-height:100vh}.wrap{width:min(900px,92%);margin:auto;padding:22px 0 60px}.card{background:#ffffffd9;backdrop-filter:blur(12px);border:1px solid white;border-radius:28px;box-shadow:0 18px 55px #8b3a4d18;padding:28px;margin:18px 0}.center{text-align:center}.badge{display:inline-block;padding:8px 13px;border-radius:999px;background:#fff0f5;color:#d62e61;font-size:12px;font-weight:900;letter-spacing:.3px}.emoji{font-size:64px;animation:float 2.5s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px) rotate(3deg)}}h1{font-size:clamp(42px,9vw,76px);line-height:.92;letter-spacing:-4px;margin:16px 0}h2{margin-top:0;font-size:30px}.sub{font-size:17px;line-height:1.6;color:var(--muted)}.lang{margin:16px auto;padding:15px 18px;border-radius:18px;background:#fff7f2;line-height:1.7;color:#6c463b}.btn{border:0;border-radius:999px;padding:14px 20px;font-weight:900;font-size:15px;cursor:pointer;background:var(--brown);color:white;transition:.2s;margin:5px}.btn:hover{transform:translateY(-2px)}.pink{background:var(--pink)}.hidden{display:none}.reveal{animation:pop .5s ease}@keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.audioBox{margin:14px auto 18px;display:flex;flex-direction:column;align-items:center;gap:8px}.audioBox span{font-size:13px;color:#8c665c}.audioBox audio{width:min(360px,100%)}video{width:min(330px,100%);border-radius:24px;background:#21130f;box-shadow:0 15px 40px #54251e22;display:block;margin:0 auto 12px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.item{padding:20px;border-radius:20px;background:#fff8f3;text-align:center;border:1px solid #f4dfd6}.big{font-size:38px}.item b{display:block;margin:7px}.progress{height:9px;background:#f1dce3;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--gold));transition:.6s}.confetti{position:fixed;top:-20px;font-size:20px;pointer-events:none;animation:fall 2.5s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}footer{text-align:center;color:#957268;font-size:12px;margin-top:20px}@media(max-width:650px){.grid{grid-template-columns:1fr}.card{padding:22px}h1{letter-spacing:-2px}}
+</style></head>
+<body><div id="soundGate" style="position:fixed;inset:0;background:rgba(35,16,12,.90);z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px">
+<div style="max-width:430px;background:#fff8f1;border-radius:28px;padding:30px;text-align:center;box-shadow:0 25px 80px #0008">
+<div style="font-size:54px">🎧💗</div><h2 style="margin:10px 0 8px">One tiny permission 👀</h2>
+<p style="color:#704d42;line-height:1.5">Press YES to play the song with the website.</p>
+<button class="btn pink" id="yesSound">YES, PLAY SOUND 🔊</button>
+<button class="btn" id="noSound">NO SOUND</button>
+</div></div>
+<audio id="song" preload="auto"><source src="she_aint_easy.mp3" type="audio/mpeg"></audio>
+
+<div class="wrap">
+<section class="card center">
+  <span class="badge">2 OCTOBER • VERY SERIOUS INVESTIGATION</span>
+  <h1>Waffle.exe<br>has crashed. 😭</h1>
+  <p class="sub">Original plan: <b>waffle + KitKat + Oreo</b>.<br>Then chhutti entered the chat. 💀</p>
+  <video id="vid" controls playsinline preload="metadata" poster="preview.png"><source src="birthday_video.mp4" type="video/mp4">Your browser doesn't support this video.</video>
+<button class="btn" onclick="startAll()">Okay, investigation shuru karo →</button>
+</section>
+
+<section id="main" class="card hidden">
+<h2>Official report 🕵️‍♂️</h2><p class="sub">Reason for waffle failure:</p><div class="progress"><div class="bar" id="bar"></div></div><p id="status"><b>Loading excuse...</b></p><button class="btn" id="next" onclick="nextStep()">Continue investigation →</button>
+</section>
+
+<section id="snacks" class="card hidden">
+<h2>Evidence recovered 🍫</h2><div class="grid"><div class="item"><div class="big">🧇</div><b>Waffle</b><span>Original mission.</span></div><div class="item"><div class="big">🍫</div><b>KitKat</b><span>Non-negotiable.</span></div><div class="item"><div class="big">🍪</div><b>Oreo</b><span>Because obviously.</span></div></div>
+<div class="lang"><b>Punjabi:</b> “Birthday te waffle dena si, par chhutti ne poora plan hi hila ditta 😭.”<br><b>Hindi:</b> “Toh abhi chocolates se kaam chalao ji… waffle ka karza baad mein. 😂”</div>
+<div class="center"><button class="btn pink" onclick="reveal()">Ek last cheez hai 👀</button></div>
+</section>
+
+<section id="message" class="card center hidden">
+<div class="emoji">🎂</div><span class="badge">HAPPY BIRTHDAYYY</span><h2>Okay madam, birthday officially upgraded. 🫶</h2>
+<p class="sub">Waffle dena tha. Holiday ne mana kar diya. <b>Chocolates ne situation sambhaal li.</b> 😌</p>
+<div class="lang"><b>Thoda Punjabi:</b> “Khush reh, hassdi reh, te KitKat/Oreo nu ignore na kari. 😂”<br><b>Thoda Hindi:</b> “Bas ek chhoti si wish — tera birthday mast jaaye.”</div>
+<p class="sub">Aur haan… <b>sorryyy</b> bolne ki meri overacting ka ek special edition bhi bana diya. 😭<br>Is baar apology ke saath chocolate bhi hai, so case thoda weak hai against me.</p>
+<p style="font-size:18px"><b>No pressure, madam. Bas smile karna compulsory-ish hai. 😌</b></p>
+<button class="btn pink" onclick="celebrate()">Chocolate tax accepted 🍫</button>
+</section>
+<section class="card center">
+  <div style="font-size:52px">🧑‍🦲</div>
+  <h2>Birthday competition update</h2>
+  <p class="sub"><b>Ganja tera competition karra hai birthday mein. 😭</b></p>
+  <p style="color:#916f65">Bas itna sarcasm allowed hai. Ab chocolates dekh. 🍫</p>
+</section>
+
+<footer>Made with questionable planning skills, one holiday, and suspicious amounts of chocolate.</footer>
+</div>
+<script>
+const vid=document.getElementById('vid');
+const song=document.getElementById('song');
+let step=0, soundAllowed=false;
+
+document.getElementById('yesSound').onclick=async()=>{
+  soundAllowed=true;
+  try{await song.play()}catch(e){}
+  document.getElementById('soundGate').style.display='none';
+};
+document.getElementById('noSound').onclick=()=>{
+  soundAllowed=false;
+  document.getElementById('soundGate').style.display='none';
+};
+
+function startAll(){
+  try{vid.play()}catch(e){}
+  if(soundAllowed){try{song.play()}catch(e){}}
+  document.getElementById('main').classList.remove('hidden');
+  document.getElementById('main').scrollIntoView({behavior:'smooth'});
+}
+const statuses=["Protest/holiday detected. Waffle route compromised. 🚧","Backup protocol activated: KitKat + Oreo. 🍫","Conclusion: birthday still happening. Therefore: HAPPY BIRTHDAY. 🎂"];
+function nextStep(){step++;document.getElementById('bar').style.width=(step/3*100)+'%';document.getElementById('status').innerHTML='<b>'+statuses[Math.min(step-1,2)]+'</b>';if(step>=3){document.getElementById('next').textContent='See the evidence →';document.getElementById('next').onclick=()=>{document.getElementById('snacks').classList.remove('hidden');document.getElementById('snacks').scrollIntoView({behavior:'smooth'})}}}
+function reveal(){document.getElementById('message').classList.remove('hidden');document.getElementById('message').scrollIntoView({behavior:'smooth'})}
+function celebrate(){for(let i=0;i<35;i++){let e=document.createElement('div');e.className='confetti';e.textContent=['🍫','🍪','🧇','💗','✨'][Math.floor(Math.random()*5)];e.style.left=Math.random()*100+'vw';e.style.animationDelay=Math.random()*.5+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),3000)}document.querySelector('#message .btn').textContent='Chocolate tax accepted. 😌'}
+</script></body></html>
